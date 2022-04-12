@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <!--
+        
+    -->
+
+   <script src="./forms.js"></script>
+
+   <form action="" id="meu-form">
+      <fieldset>
+         <legend>Contato</legend>
+         <label>
+            Nome1
+            <input type="text">
+         </label>
+         <br>
+         <label for="nome2">Nome2</label>
+         <input id="nome2" type="text">
+
+         <br>
+         <br>
+
+         <input type="text" list="fruitdata" placeholder="Escolha uma fruta" />
+
+         <datalist id="fruitdata">
+            <option>apple</option>
+            <option>banana</option>
+            <option>mango</option>
+            <option>orange</option>
+         </datalist>
+
+         <br>
+         <br>
+
+         <input type="date" value="" required>
+         <input type="email" autocomplete="email" placeholder="digite seu email"><br>
+         <input type="file" disabled>
+         <input type="text" value="texto" readonly>
+
+         <br>
+         <br>
+
+         <p>INTUP TYPE PASSWORD</p>
+
+         <!--
+                O parâmetro Title serve para dar dica quando
+                digita a senha errada
+            -->
+
+         <input type="password" minlength="4" maxlength="8" size="8" pattern="[0-9a-fA-F]{4,8}" title="Coloque HEX, no mínimo 4 e no máximo 8 caracteres" placeholder="coloque sua senha" required autocomplete="on">
+
+
+         <br>
+         <br>
+
+         <button type="submit" autofocus form="meu-form">Enviar</button>
+         <button type="reset" disabled>reset</button>
+         <button type="submit" name="nome" value="qualquer valor">OK</button>
+
+
+
+      </fieldset>
+   </form>
+
+
+</body>
+
+</html>
