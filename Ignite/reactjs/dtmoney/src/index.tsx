@@ -1,23 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createServer } from 'miragejs';
+import { createServer, Model } from 'miragejs';
 import { App } from './App';
 
 createServer({
+	//It's possible to have a data base using models from mirage
+	models: {
+		//declare the data base name:
+		transaction: Model,
+	},
+
 	routes() {
 		this.namespace = 'api';
 
 		this.get('/transactions', () => {
-			return [
-				{
-					id: 1,
-					title: 'Transaction 1',
-					amount: 400,
-					type: 'deposit',
-					category: 'Food',
-					createDate: new Date(),
-				},
-			];
+			//use this.schema.all to get data from 'transaction'
+			return this.schema.all('transaction');
+		});
+
+		this.post('/transactions', (schema, request) => {
+			const data = JSON.parse(request.requestBody);
+
+			//use schema.create to add data in mirage data base 'transaction'
+			return schema.create('transaction', data);
 		});
 	},
 });
