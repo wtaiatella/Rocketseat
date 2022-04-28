@@ -34,11 +34,13 @@ export function TransactionTable() {
 				</thead>
 				<tbody>
 					{transactions.map((transaction) => (
-						<tr>
-							<td>transaction.title</td>
-							<td className='deposit'>'R$400'</td>
-							<td>'Casa'</td>
-							<td>'2022-04-27'</td>
+						<tr key={transaction.id}>
+							<td>{transaction.title}</td>
+							<td className={transaction.type}>
+								R${transaction.amount}
+							</td>
+							<td>{transaction.category}</td>
+							<td>{transaction.createAt}</td>
 						</tr>
 					))}
 				</tbody>
