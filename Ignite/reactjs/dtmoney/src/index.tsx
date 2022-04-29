@@ -6,7 +6,7 @@ import { App } from './App';
 createServer({
 	//It's possible to have a data base using models from mirage
 	models: {
-		//declare the data base name:
+		//declare the table name:
 		transaction: Model,
 	},
 
@@ -20,7 +20,7 @@ createServer({
 					type: 'deposit',
 					category: 'dev',
 					amount: 6000,
-					createAt: new Date('2022-04-27 18:36:00'),
+					createAt: new Date('2022-04-24 18:36:00'),
 				},
 			],
 		});
@@ -36,7 +36,7 @@ createServer({
 
 		this.post('/transactions', (schema, request) => {
 			const data = JSON.parse(request.requestBody);
-
+			console.log('dados do POST ', data);
 			//use schema.create to add data in mirage data base 'transaction'
 			return schema.create('transaction', data);
 		});
