@@ -20,7 +20,7 @@ createServer({
 					type: 'deposit',
 					category: 'dev',
 					amount: 6000,
-					createAt: new Date('2022-04-24 18:36:00'),
+					createdAt: new Date('2022-04-24 18:36:00'),
 				},
 			],
 		});
@@ -31,6 +31,7 @@ createServer({
 
 		this.get('/transactions', () => {
 			//use this.schema.all to get data from 'transaction'
+			console.log(this.schema.all('transaction'));
 			return this.schema.all('transaction');
 		});
 
