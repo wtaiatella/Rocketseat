@@ -4,9 +4,10 @@ import {
   ComponentProps,
   createContext,
   useContext,
-  useId,
+  useEffect,
   useState,
 } from 'react'
+import { nanoid } from 'nanoid'
 
 export type RootProps = ComponentProps<'div'>
 
@@ -19,8 +20,12 @@ type FileInputContextType = {
 const FileInputContext = createContext({} as FileInputContextType)
 
 export function Root(props: RootProps) {
-  const id = useId()
+  const [id, setId] = useState<string>('')
   const [files, setFiles] = useState<File[]>([])
+
+  useEffect(() => {
+    setId(nanoid()) // generate a unique ID on the client side
+  }, [])
 
   function onFilesSelected(files: File[], multiple: boolean) {
     if (multiple) {
