@@ -1,17 +1,47 @@
 import { Button } from '@/components/Button'
 import { formatBytes } from '@/utils/format-bytes'
 import { CheckCircle2, Trash2, UploadCloud } from 'lucide-react'
+import { tv, VariantProps } from 'tailwind-variants'
 
-export interface FileItemProps {
+const fileItem = tv({
+  slots: {
+    container:
+      'group flex items-start gap-4 rounded-lg border border-zinc-200 p-4',
+    icon: 'rounded-full border-4 border-violet-100 bg-violet-200 p-2 text-violet-600',
+    deleteButton: '',
+  },
+
+  variants: {
+    state: {
+      progress: {
+        container: '',
+      },
+      complete: {
+        container: 'border-violet-500',
+      },
+      error: {
+        container: 'bg-error-50 border-error-300',
+        icon: 'bg-error-200 border-error-100 text-error-600',
+        deleteButton: 'text-error-700 hover:text-error-900 hover:bg-error-200',
+      },
+    },
+  },
+
+  defaultVariants: {
+    state: 'progress',
+  },
+})
+export interface FileItemProps extends VariantProps<typeof fileItem> {
   name: string
   size: number
-  state: string
 }
 
 export function FileItem({ name, size, state }: FileItemProps) {
+  const { container, icon, deleteButton } = fileItem({ state })
+
   return (
-    <div className="group flex items-start gap-4 rounded-lg border border-zinc-200 p-4">
-      <div className="rounded-full border-4 border-violet-100 bg-violet-200 p-2 text-violet-600">
+    <div className={container()}>
+      <div className={icon()}>
         <UploadCloud className="h-4 w-4" />
       </div>
 
@@ -57,12 +87,8 @@ export function FileItem({ name, size, state }: FileItemProps) {
       {state === 'complete' ? (
         <CheckCircle2 className="m-2 h-5 w-5 fill-violet-600 text-white" />
       ) : (
-        <Button
-          type="button"
-          className="ml-auto rounded-md p-2 hover:bg-zinc-100"
-          variant="ghost"
-        >
-          <Trash2 className="h-5 w-5 text-zinc-500" />
+        <Button type="button" className={deleteButton()} variant="ghost">
+          <Trash2 className="h-5 w-5" />
         </Button>
       )}
     </div>
