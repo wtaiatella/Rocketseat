@@ -43,16 +43,13 @@ export const defaultTheme = {
     backgroundSummary: colors["gray-600"],
     backgroundTable: colors["gray-700"],
     backgroundInput: colors["gray-900"],
+    backgroundTransactionTypeButton: colors["gray-700"],
+    backgroundTransactionTypeButtonHover: colors["gray-600"],
 
     text: colors["gray-100"],
-    textSummaryHeader: colors["gray-300"],
-    textSearchInput: colors["gray-300"],
-    textSearchInputPlaceholder: colors["gray-500"],
+    text300: colors["gray-300"],
+    text500: colors["gray-500"],
     navLink: colors["gray-300"],
-
-    completed: colors["green-500"],
-    canceled: colors["red-500"],
-    inProgress: colors["yellow-500"],
 
     income: colors["green-500"],
     outcome: colors["red-500"],

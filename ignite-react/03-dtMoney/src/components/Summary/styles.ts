@@ -25,7 +25,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: ${({ theme }) => theme.colors.textSummaryHeader};
+    color: ${({ theme }) => theme.colors.text300};
   }
 
   strong {

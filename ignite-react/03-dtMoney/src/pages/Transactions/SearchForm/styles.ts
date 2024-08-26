@@ -11,11 +11,11 @@ export const SearchFormContainer = styled.form`
     border-radius: 6px;
     border: 0;
     background: ${({ theme }) => theme.colors.backgroundInput};
-    color: ${({ theme }) => theme.colors.textSearchInput};
+    color: ${({ theme }) => theme.colors.text300};
     padding: 1rem;
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.textSearchInputPlaceholder};
+      color: ${({ theme }) => theme.colors.text500};
     }
   }
 
