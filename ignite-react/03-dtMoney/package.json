@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "json-server": "json-server --watch server.json --port 3000 --delay 500"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
