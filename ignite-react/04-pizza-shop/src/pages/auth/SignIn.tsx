@@ -28,17 +28,20 @@ export function SignIn() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log(data);
-      toast.success("Enviamos um link de autenticação para o seu e-mail", {
-        action: {
-          label: "Reenviar e-mail",
-          onClick: () => {
-            handleSignIn(data);
+      toast.success(
+        "We have sent an authentication e-mail to your e-mail address.",
+        {
+          action: {
+            label: "Resend e-mail",
+            onClick: () => {
+              handleSignIn(data);
+            },
           },
         },
-      });
+      );
       reset();
     } catch {
-      toast.error("Erro ao acessar o painel");
+      toast.error("Error accessing your dashboard");
     }
   }
 
@@ -49,10 +52,10 @@ export function SignIn() {
         <div className="w-88 flex flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Acessar Painel
+              Access the Dashboard
             </h1>
             <p className="text-sm text-muted-foreground">
-              Acompanhe suas vendas pelo painel do parceiro'
+              Track your sales through the partner dashboard
             </p>
           </div>
           <form
@@ -60,11 +63,11 @@ export function SignIn() {
             onSubmit={handleSubmit(handleSignIn)}
           >
             <div className="space-y-2">
-              <Label htmlFor="email">Seu e-mail</Label>
+              <Label htmlFor="email">Your e-mail</Label>
               <Input type="email" id="email" {...register("email")} />
             </div>
             <Button type="submit" className="" disabled={isSubmitting}>
-              Acessar Painel
+              Access Dashboard
             </Button>
           </form>
         </div>
