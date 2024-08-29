@@ -8,23 +8,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const SignInFormSchema = z.object({
+const SignUpFormSchema = z.object({
   email: z.string().email(),
 });
 
-type SignInFormData = z.infer<typeof SignInFormSchema>;
+type SignUpFormData = z.infer<typeof SignUpFormSchema>;
 
-export function SignIn() {
+export function SignUp() {
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
     reset,
-  } = useForm<SignInFormData>({
-    resolver: zodResolver(SignInFormSchema),
+  } = useForm<SignUpFormData>({
+    resolver: zodResolver(SignUpFormSchema),
   });
 
-  async function handleSignIn(data: SignInFormData) {
+  async function handleSignUp(data: SignUpFormData) {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log(data);
@@ -32,7 +32,7 @@ export function SignIn() {
         action: {
           label: "Reenviar e-mail",
           onClick: () => {
-            handleSignIn(data);
+            handleSignUp(data);
           },
         },
       });
@@ -57,7 +57,7 @@ export function SignIn() {
           </div>
           <form
             className="flex flex-col gap-4"
-            onSubmit={handleSubmit(handleSignIn)}
+            onSubmit={handleSubmit(handleSignUp)}
           >
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
